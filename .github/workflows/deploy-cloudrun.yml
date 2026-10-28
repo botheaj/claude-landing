@@ -1,0 +1,77 @@
+name: Deploy to Cloud Run
+
+on:
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - '**.md' # docs don't change the image
+  workflow_dispatch:
+
+# Required for Workload Identity Federation OIDC token generation
+permissions:
+  contents: read
+  id-token: write
+
+env:
+  PROJECT_ID: ajbothe-com        # ajbothe-com | keyboard-baby
+  SERVICE: claude-landing
+  REGION: us-central1
+  IMAGE: gcr.io/ajbothe-com/claude-landing
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Authenticate to Google Cloud
+        id: auth
+        uses: google-github-actions/auth@v2
+        with:
+          workload_identity_provider: ${{ secrets.GCP_WORKLOAD_IDENTITY_PROVIDER }}
+          service_account: ${{ secrets.GCP_SERVICE_ACCOUNT }}
+
+      - name: Set up gcloud
+        uses: google-github-actions/setup-gcloud@v2
+
+      # Building on the runner rather than with Cloud Build: it's free, it's
+      # faster for an image this small, and it keeps Cloud Build's staging
+      # bucket and service account out of the picture entirely.
+      - name: Configure Docker for GCR
+        run: gcloud auth configure-docker gcr.io --quiet
+
+      - name: Build and push image
+        run: |
+          docker build -t "$IMAGE:$GITHUB_SHA" -t "$IMAGE:latest" .
+          docker push "$IMAGE:$GITHUB_SHA"
+          docker push "$IMAGE:latest"
+
+      - name: Deploy to Cloud Run
+        id: deploy
+        uses: google-github-actions/deploy-cloudrun@v2
+        with:
+          service: ${{ env.SERVICE }}
+          region: ${{ env.REGION }}
+          image: ${{ env.IMAGE }}:${{ github.sha }}
+          # Static site, no state: instances are interchangeable, so this can
+          # scale out freely. Capped at 3 purely to bound a runaway bill.
+          flags: >-
+            --allow-unauthenticated
+            --service-account=claude-landing-run@ajbothe-com.iam.gserviceaccount.com
+            --port=8080
+            --cpu=1
+            --memory=256Mi
+            --max-instances=3
+
+      - name: Smoke test the new revision
+        run: |
+          url="${{ steps.deploy.outputs.url }}"
+          echo "Deployed to $url"
+          for i in 1 2 3 4 5; do
+            code=$(curl -s -o /dev/null -w '%{http_code}' "$url/health" || true)
+            [ "$code" = "200" ] && echo "health ok" && exit 0
+            echo "attempt $i: got '$code', retrying"; sleep 5
+          done
+          echo "service did not come up healthy"; exit 1
