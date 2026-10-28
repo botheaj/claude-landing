@@ -1,91 +1,110 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>AJ's Claude Projects</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AJ Bothe · Claude Projects</title>
 <meta name="description" content="Everything AJ Bothe has built with Claude, in one place.">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 <style>
-  :root {
-    --bg: #f7f3ee; --card: #fffdfa; --ink: #2b2620; --muted: #776d62;
-    --line: #e6ddd2; --accent: #c96442;
-  }
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --bg: #1c1a17; --card: #262320; --ink: #eee7de; --muted: #a39887;
-      --line: #3a352f; --accent: #e08a68;
+    /* Same look as ajbothe.com: plain white, system type, underlined blue links. */
+    * { box-sizing: border-box; }
+    body {
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        background-color: #ffffff;
+        color: #111827;
+        line-height: 1.6;
+        max-width: 42rem;
+        margin: 0 auto;
+        padding: 2rem 1rem;
     }
-  }
-  * { box-sizing: border-box; }
-  body {
-    margin: 0; background: var(--bg); color: var(--ink);
-    font: 16px/1.5 ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
-  }
-  main { max-width: 560px; margin: 0 auto; padding: 48px 16px 64px; }
-  header { text-align: center; margin-bottom: 36px; }
-  h1 { font: 600 1.9rem/1.2 ui-serif, Georgia, serif; margin: 0 0 6px; }
-  header p { margin: 0; color: var(--muted); }
-  h2 {
-    font-size: .75rem; letter-spacing: .08em; text-transform: uppercase;
-    color: var(--muted); margin: 32px 0 10px;
-  }
-  a.card {
-    display: block; text-decoration: none; color: inherit;
-    background: var(--card); border: 1px solid var(--line); border-radius: 14px;
-    padding: 14px 18px; margin-bottom: 10px;
-    transition: border-color .15s, transform .15s;
-  }
-  a.card:hover, a.card:focus-visible { border-color: var(--accent); transform: translateY(-1px); outline: none; }
-  .name { font-weight: 600; }
-  .host { color: var(--accent); font-size: .85rem; }
-  .desc { color: var(--muted); font-size: .92rem; margin-top: 2px; }
-  footer { text-align: center; color: var(--muted); font-size: .85rem; margin-top: 40px; }
-  footer a { color: inherit; }
+    @media (min-width: 768px) { body { padding: 4rem 1rem; } }
+
+    h1, h2, h3 { font-weight: 600; color: #1f2937; margin: 0; }
+    a { color: #1d4ed8; text-decoration: underline; }
+    a:hover { color: #2563eb; }
+
+    header { text-align: center; margin-bottom: 3rem; }
+    header h1 { font-size: 2.25rem; line-height: 1.2; }
+    @media (min-width: 768px) { header h1 { font-size: 3rem; } }
+    header p { margin: .75rem 0 0; font-size: 1.125rem; color: #4b5563; }
+    nav { margin-top: 1.25rem; }
+    nav a { margin: 0 .5rem; }
+
+    section { margin-bottom: 3rem; }
+    section h2 { font-size: 1.875rem; margin-bottom: 1.5rem; }
+    .entry { margin-bottom: 2rem; }
+    .entry h3 { font-size: 1.25rem; }
+    .entry p { margin: .25rem 0 0; color: #374151; }
+    .entry .link { margin-top: .5rem; }
+
+    footer { text-align: center; margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid #e5e7eb; }
+    footer .social { margin-bottom: 1rem; }
+    footer .social a { margin: 0 .5rem; color: #6b7280; text-decoration: none; }
+    footer .social a:hover { color: #111827; }
+    footer p { font-size: .875rem; color: #6b7280; margin: 0; }
 </style>
 </head>
 <body>
-<main>
-  <header>
-    <h1>AJ's Claude Projects</h1>
+
+<header>
+    <h1>Claude Projects</h1>
     <p>Things I've built with Claude.</p>
-  </header>
-  <div id="list"><noscript>This page needs JavaScript to list the projects.</noscript></div>
-  <footer><a href="https://ajbothe.com">ajbothe.com</a></footer>
-</main>
+    <nav id="nav">
+        <a href="https://ajbothe.com">ajbothe.com</a>
+        <a href="https://github.com/botheaj" target="_blank">Github</a>
+    </nav>
+</header>
+
+<main id="list"><noscript>This page needs JavaScript to list the projects.</noscript></main>
+
+<footer>
+    <div class="social">
+        <a href="https://www.linkedin.com/in/ajbothe/" target="_blank" aria-label="LinkedIn Profile"><i class="fab fa-linkedin fa-lg"></i></a>
+        <a href="https://github.com/botheaj" target="_blank" aria-label="GitHub Profile"><i class="fab fa-github fa-lg"></i></a>
+        <a href="https://x.com/ajbot513" target="_blank" aria-label="X Profile"><i class="fab fa-x-twitter fa-lg"></i></a>
+    </div>
+    <p>&copy; <span id="currentYear"></span> AJ Bothe</p>
+</footer>
+
 <script>
-  // Projects live in projects.json so a deploy can add one without touching markup.
-  // Groups render in the order they first appear in the file.
-  fetch('projects.json')
-    .then(r => r.json())
-    .then(projects => {
-      const groups = new Map();
-      for (const p of projects) {
-        if (!groups.has(p.group)) groups.set(p.group, []);
-        groups.get(p.group).push(p);
-      }
-      const list = document.getElementById('list');
-      for (const [group, items] of groups) {
-        const h = document.createElement('h2');
-        h.textContent = group;
-        list.append(h);
-        for (const p of items) {
-          const a = document.createElement('a');
-          a.className = 'card';
-          a.href = p.url;
-          const name = document.createElement('div');
-          name.className = 'name';
-          name.textContent = p.name;
-          const host = document.createElement('div');
-          host.className = 'host';
-          host.textContent = new URL(p.url).host;
-          const desc = document.createElement('div');
-          desc.className = 'desc';
-          desc.textContent = p.description || '';
-          a.append(name, host, desc);
-          list.append(a);
-        }
-      }
-    });
+    document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+    // Projects live in projects.json so a deploy can add one without touching markup.
+    // Groups render in the order they first appear in the file.
+    const el = (tag, props = {}, ...kids) => {
+        const n = Object.assign(document.createElement(tag), props);
+        n.append(...kids);
+        return n;
+    };
+    const slug = s => s.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+
+    fetch('projects.json')
+        .then(r => r.json())
+        .then(projects => {
+            const groups = new Map();
+            for (const p of projects) {
+                if (!groups.has(p.group)) groups.set(p.group, []);
+                groups.get(p.group).push(p);
+            }
+            const list = document.getElementById('list');
+            // Section links go ahead of the external ones, like the nav on ajbothe.com.
+            const nav = document.getElementById('nav');
+            const firstExternal = nav.querySelector('a');
+            for (const [group, items] of groups) {
+                const id = slug(group);
+                nav.insertBefore(el('a', { href: '#' + id, textContent: group }), firstExternal);
+                const section = el('section', { id }, el('h2', { textContent: group }));
+                for (const p of items) {
+                    section.append(el('article', { className: 'entry' },
+                        el('h3', { textContent: p.name }),
+                        el('p', { textContent: p.description || '' }),
+                        el('p', { className: 'link' }, el('a', { href: p.url, textContent: new URL(p.url).host }))));
+                }
+                list.append(section);
+            }
+        });
 </script>
 </body>
 </html>
