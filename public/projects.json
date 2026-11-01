@@ -3,6 +3,7 @@
   {"name": "Moonsweeper", "url": "https://moonsweeper.ajbothe.com", "group": "Games", "description": "Meowdoku, but in space."},
   {"name": "Ascendance Weapon Wheel", "url": "https://huntingmonsters.ajbothe.com", "group": "Games", "description": "Spin for the weapon you'll main when Monster Hunter Wilds: Ascendance launches."},
   {"name": "Nostalgia 1985", "url": "https://nostalgia-1985.ajbothe.com", "group": "VR", "description": "A WebXR time machine for Meta Quest: a 1985 living room at dusk."},
+  {"name": "Video Store 1985", "url": "https://videostore-1985.ajbothe.com", "group": "VR", "description": "The same Friday night at a 1985 video rental store: pick up any tape and read the back."},
   {"name": "Slap the Magician", "url": "https://ajs-vr-demo.ajbothe.com", "group": "VR", "description": "A small WebXR physics toy for Meta Quest."},
   {"name": "Root Access", "url": "https://compsci.homeschool.ajbothe.com", "group": "Homeschool", "description": "A hands-on computing course, from transistors and binary to shipping an AI web app."},
   {"name": "Ciao, Beppe!", "url": "https://italian.homeschool.ajbothe.com", "group": "Homeschool", "description": "An Italian travel course: phrases, etiquette, quizzes and native pronunciation."},
