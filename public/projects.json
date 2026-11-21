@@ -6,7 +6,7 @@
   {"name": "Slap the Magician", "url": "https://ajs-vr-demo.ajbothe.com", "group": "VR", "description": "A small WebXR physics toy for Meta Quest."},
   {"name": "Root Access", "url": "https://compsci.homeschool.ajbothe.com", "group": "Homeschool", "description": "A hands-on computing course, from transistors and binary to shipping an AI web app."},
   {"name": "Ciao, Beppe!", "url": "https://italian.homeschool.ajbothe.com", "group": "Homeschool", "description": "An Italian travel course: phrases, etiquette, quizzes and native pronunciation."},
-  {"name": "Studdy", "url": "https://studdy.ajbothe.com", "group": "Homeschool", "description": "An AI whiteboard tutor that writes and draws the whole lesson while it talks. Interrupt any time."},
+  {"name": "Learnding", "url": "https://learnding.ajbothe.com", "group": "Homeschool", "description": "An AI whiteboard tutor that writes and draws the whole lesson while it talks. Interrupt any time."},
   {"name": "Intensity", "url": "https://intensity.ajbothe.com", "group": "Fitness", "description": "A slideshow trainer for eight dumbbell and pull-up-bar movements, one level per week."},
   {"name": "Seasons Smash", "url": "https://keyboard.baby", "group": "keyboard.baby", "description": "A keyboard smasher for toddlers, in all four seasons."},
   {"name": "Alphabet Smash", "url": "https://abc.keyboard.baby", "group": "keyboard.baby", "description": "Letters and numbers say their own names out loud."},
